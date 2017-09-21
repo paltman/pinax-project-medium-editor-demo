@@ -7,9 +7,29 @@ window.Popper = require('popper.js');
 require('bootstrap');
 
 import ajaxSendMethod from './ajax';
+import MediumEditor from 'medium-editor';
+import AutoList from 'medium-editor-autolist';
 
 $(() => {
     $(document).ajaxSend(ajaxSendMethod);
+
+    const editor = new MediumEditor('#id_content', {
+        extensions: {
+            'autolist': new AutoList()
+        },
+        toolbar: {
+            buttons: [
+                'h2',
+                'h3',
+                'bold',
+                'italic',
+                'quote',
+                'pre',
+                'unorderedlist',
+                'orderedlist'
+            ]
+        }
+    });
 
     // Topbar active tab support
     $('.topbar li').removeClass('active');

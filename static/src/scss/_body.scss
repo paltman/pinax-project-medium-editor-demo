@@ -14,3 +14,7 @@ footer {
     @extend .container;
   }
 }
+
+.form-control.medium-editor-hidden {
+  display: none;
+}
