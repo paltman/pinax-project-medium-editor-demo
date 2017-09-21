@@ -1,0 +1,27 @@
+{% extends "site_base.html" %}
+
+
+{% block body %}
+<h1>Notes</h1>
+<div class="row">
+    {% for note in note_list %}
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    {{ note.title }}
+                </h4>
+                <div class="note-content">
+                    {{ note.content|safe }}
+                </div>
+            </div>
+            <div class="card-footer text-right">
+                {% if request.user == note.author %}
+                    <a class="card-link" href="{% url "notes_update" note.pk %}">Edit</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
