@@ -10,6 +10,8 @@ import ajaxSendMethod from './ajax';
 import MediumEditor from 'medium-editor';
 import AutoList from 'medium-editor-autolist';
 
+require('medium-editor-insert-plugin')($);
+
 $(() => {
     $(document).ajaxSend(ajaxSendMethod);
 
@@ -29,6 +31,9 @@ $(() => {
                 'orderedlist'
             ]
         }
+    });
+    $('#id_content').mediumInsert({
+        editor
     });
 
     // Topbar active tab support
