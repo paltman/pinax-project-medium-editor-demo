@@ -15,6 +15,8 @@ require('medium-editor-insert-plugin')($);
 $(() => {
     $(document).ajaxSend(ajaxSendMethod);
 
+    const imageUploadUrl = $('#id_content').closest('form').data('image-upload-url');
+
     const editor = new MediumEditor('#id_content', {
         extensions: {
             'autolist': new AutoList()
@@ -32,8 +34,17 @@ $(() => {
             ]
         }
     });
+
     $('#id_content').mediumInsert({
-        editor
+        editor,
+        addons: {
+            images: {
+                fileUploadOptions: {  // these are options passed to $.ajax; there might be ways for us to pass a function to an option to transform pinax-images data
+                    url: imageUploadUrl,
+                    acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
+                }
+            }
+        }
     });
 
     // Topbar active tab support

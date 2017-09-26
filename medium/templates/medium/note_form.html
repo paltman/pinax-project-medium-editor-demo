@@ -3,7 +3,7 @@
 {% load bootstrap %}
 
 {% block body %}
-    <form method="post" action=".">
+    <form method="post" action="." data-image-upload-url="{% url "handle_upload" %}">
         {% csrf_token %}
         {{ form|bootstrap }}
         <div class="form-actions">

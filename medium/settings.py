@@ -136,6 +136,7 @@ INSTALLED_APPS = [
     # external
     "account",
     "pinax.eventlog",
+    "pinax.images",
     "pinax.webanalytics",
 
     # project

@@ -8,7 +8,8 @@ from django.contrib import admin
 from .views import (
     NoteListView,
     NoteCreateView,
-    NoteUpdateView
+    NoteUpdateView,
+    handle_upload
 )
 
 
@@ -16,6 +17,8 @@ urlpatterns = [
     url(r"^$", TemplateView.as_view(template_name="homepage.html"), name="home"),
     url(r"^admin/", include(admin.site.urls)),
     url(r"^account/", include("account.urls")),
+
+    url(r"ajax/image-upload/$", handle_upload, name="handle_upload"),
 
     url(r"^notes/$", NoteListView.as_view(), name="notes_list"),
     url(r"^notes/create/$", NoteCreateView.as_view(), name="notes_create"),
